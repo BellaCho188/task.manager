@@ -1,6 +1,5 @@
 task = []
 
-
 def add_task():
     user_task = input("Enter Your Task")
     task.append(user_task)
@@ -13,7 +12,7 @@ def view_task():
 
 def complete_task():
     task_num = int(input("Enter task that you have completed"))
-    task.pop(task_num - 1)
+    task.pop1(task_num - 1)
     view_task()
 
 
