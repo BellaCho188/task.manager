@@ -1,9 +1,16 @@
 task = []
+from datetime import datetime
 
 def add_task():
-    user_task = input("Enter Your Task")
-    task.append(user_task)
+    user_task = input("Enter Your Task>>")
+    user_due_date = input("Enter the due date (format: MM-DD-YYY)>>")
+    try: #allows to test a block of code for errors
+        due_date = datetime.strptime(user_due_date, "%m-%d-%Y")
+        task.append((user_task, due_date))#double parenthesis for the 2 things needed to append
+        print("Task was successfully added!")
 
+    except ValueError: #if error occurs, will prompt with:
+        print("invalid date format, please use MM-DD-YYY")
 
 def view_task():
     for i, j in enumerate(task):
