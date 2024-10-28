@@ -1,6 +1,7 @@
 """
-1. order date
-2. then order the time 
+for iteration 3:
+1. order date (done!)
+2. then order the time (done!)
 3. edit the task
 """
 from operator import itemgetter #will help extract the date, currently doesn't do anything
@@ -10,13 +11,15 @@ from datetime import datetime
 #==============================================================
 def sort_date(): 
     task.sort(key = lambda x: x[1])
+    task.sort(key = lambda x: x[2])
     for i, j in enumerate(task):#enumerate adds a counter as the key of the object
         print(i + 1, " ", j)
 
 def add_task():
     user_task = input("Enter Your Task>>")
     user_due_date = input("Enter the due date (format: MM-DD-YYY)>>")
-    task.append((user_task, user_due_date))#double parenthesis for the 2 things needed to append
+    user_time = input("Enter what time task is due>>")
+    task.append((user_task, user_due_date,user_time))#double parenthesis for the 2 things needed to append
     print("Task was successfully added!")
 
 
