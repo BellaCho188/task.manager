@@ -3,8 +3,8 @@ task = []
 from datetime import date
 from datetime import datetime
 #=====================================================
-def sort_date():
-    sorted_task = sorted(task,key=itemgetter(1)) # will sort by the second element
+def sort_date(): 
+    #sorted_task = sorted(task,key=itemgetter(1)) # will sort by the second element
     for i, j in enumerate(task):#enumerate adds a counter as the key of the object
         print(i + 1, " ", j)
 
