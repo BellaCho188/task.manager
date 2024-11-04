@@ -1,29 +1,32 @@
 """
-1. order date
-2. then order the time 
+for iteration 3:
+1. order date (done!-Avery)
+2. then order the time (done!-Bella)
 3. edit the task
 """
 from operator import itemgetter #will help extract the date, currently doesn't do anything
-task = []
+from flask import Flask
+app = Flask(task.man)
+task = [] #intitalizing of list
+
+#===============================================================
 from datetime import date
 from datetime import datetime
 #==============================================================
 def sort_date(): 
-    task.sort(key = lambda x: x[2])
-    task.sort(key = lambda x: x[1])
+    task.sort(key = lambda x: x[2])#sorts by the submission time
+    task.sort(key = lambda x: x[1])#sorts by the date
     for i, j in enumerate(task):#enumerate adds a counter as the key of the object
         print(i + 1, " ", j)
 
 def add_task():
     user_task = input("Enter Your Task>>")
     user_due_date = input("Enter the due date (format: MM-DD-YYY)>>")
-    try: #allows to test a block of code for errors
-        #due_date = datetime.strptime(user_due_date, "%m-%d-%Y")
-        task.append((user_task, user_due_date))#double parenthesis for the 2 things needed to append
-        print("Task was successfully added!")
+    user_due_time = input("Enter the due time (format: HH:MM) >>")
+    task.append((user_task, user_due_date,user_time))#double parenthesis for the 2 things needed to append
+    print("Task was successfully added!")
 
-    except ValueError: #if error occurs, will prompt with:
-        print("invalid date format, please use MM-DD-YYY") #(Doesnt currently work)
+
 
 def note_task():
     view_task()
