@@ -1,17 +1,21 @@
 """
 for iteration 3:
-1. order date (done!)
-2. then order the time (done!)
+1. order date (done!-Avery)
+2. then order the time (done!-Bella)
 3. edit the task
 """
 from operator import itemgetter #will help extract the date, currently doesn't do anything
-task = []
+from flask import Flask
+app = Flask(task.man)
+task = [] #intitalizing of list
+
+#===============================================================
 from datetime import date
 from datetime import datetime
 #==============================================================
 def sort_date(): 
-    task.sort(key = lambda x: x[1])
-    task.sort(key = lambda x: x[2])
+    task.sort(key = lambda x: x[1])#sorts by the date
+    task.sort(key = lambda x: x[2])#sorts by the submission time
     for i, j in enumerate(task):#enumerate adds a counter as the key of the object
         print(i + 1, " ", j)
 
