@@ -23,7 +23,7 @@ def add_task():
     user_task = input("Enter Your Task>>")
     user_due_date = input("Enter the due date (format: MM-DD-YYY)>>")
     user_due_time = input("Enter the due time (format: HH:MM) >>")
-    task.append((user_task, user_due_date,user_time))#double parenthesis for the 2 things needed to append
+    task.append(((user_task, user_due_date, user_due_time))) #three parenthesis for the 2 things needed to append
     print("Task was successfully added!")
 
 
