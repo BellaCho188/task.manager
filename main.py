@@ -9,6 +9,7 @@ from datetime import date
 from datetime import datetime
 #==============================================================
 def sort_date(): 
+    task.sort(key = lambda x: x[2])
     task.sort(key = lambda x: x[1])
     for i, j in enumerate(task):#enumerate adds a counter as the key of the object
         print(i + 1, " ", j)
