@@ -1,19 +1,9 @@
-from datetime import datetime
+from flask import Flask
+app = Flask(__name__)
 
-dates = [
-    "2023-01-01",
-    "2022-12-31",
-    "2024-02-15",
-    "2023-06-10"
-]
+@app.route('/')
+def index():
+    return "hello world!"
 
-# Convert strings to datetime objects
-dates = [datetime.strptime(date, "%Y-%m-%d") for date in dates]
-
-# Sort the dates (creates a new sorted list)
-sorted_dates = sorted(dates)
-print(sorted_dates)
-
-# Sort the original list in place
-dates.sort()
-print(dates)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
