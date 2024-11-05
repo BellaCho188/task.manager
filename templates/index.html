@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Task manager</title>
+</head>
+<body>
+    <h1>Welcome to a simple task manager</h1>
+    <p>This is a paragraph.</p>
+    <form method="post">
+        <select name = "menu">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button type="submit">submit</button>
+    </form>
+
+    <img src="{{ url_for('static', filename='cooper.png') }}" width="100"/>
+</body>
+</html>

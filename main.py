@@ -6,7 +6,7 @@ for iteration 3:
 """
 from operator import itemgetter #will help extract the date, currently doesn't do anything
 from flask import Flask
-app = Flask(task.man)
+app = Flask(__name__)
 task = [] #intitalizing of list
 
 #===============================================================
