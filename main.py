@@ -38,6 +38,7 @@ class Tasks:
     def time_editor(self, edited_time):
         self.due_time = edited_time
 
+
 def add_task():
     user_task = input("Enter Your Task>>")
     due_date = input("Enter the due date (format: MM-DD-YYY)>>")

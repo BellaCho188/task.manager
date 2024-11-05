@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
     <title>Task manager</title>
-</head>
-<body>
-    <h1>Welcome to a simple task manager</h1>
-    <p>This is a paragraph.</p>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>todo list</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">task</th>
+          <th scope="col">due date</th>
+          <th scope="col">due time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todo in tasks %}
+        <tr>
+          <td>{{ todo.user_task }}</td>
+          <td>{{ todo.due_date }}</td>
+          <td>{{ todo.due_time }}</td>
+          <td>
+            <form method="post">
+                <input type="hidden" name="index_to_pop" value="{{ loop.index }}" />
+                <button type="submit" name="remove_task">remove</button>
+            </form>
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
     <form method="post">
-        <select name = "menu">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-        <button type="submit">submit</button>
+      <label for="user_task">user_task</label>
+      <input name="user_task" />
+
+      <label for="due_date">due_date</label>
+      <input name="due_date" type="date" />
+
+      <label for="due_time">due_date</label>
+      <input name="due_time" type="time" />
+
+      <button type="submit" name="add_task">add task</button>
     </form>
 
-    <img src="{{ url_for('static', filename='cooper.png') }}" width="100"/>
-</body>
+    <img src="{{ url_for('static', filename='cooper.png') }}" width="100" />
+  </body>
 </html>
