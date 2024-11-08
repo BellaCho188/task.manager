@@ -1,6 +1,12 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for
+import datetime as dt
 
-app = Flask(__name__)
+# flask is the main class used to create the web application
+# render_template renders an html tmeplate and passes the data to it
+# request: used to handle incoming HTTP requests and form data
+# url_for used to generate url
+
+app = Flask(__name__)  # creates an instance of the flask class
 
 
 class Task:
@@ -8,11 +14,11 @@ class Task:
 
     def __init__(self, user_task: str, due_date: str, due_time: str):
         self.user_task = user_task
-        self.due_date = due_date
-        self.due_time = due_time
+        self.due_date = due_date  # dt.date.fromisoformat(due_time)
+        self.due_time = due_time  # dt.datetime.strptime("%H:%M")
 
     def __str__(self) -> str:
-        return f"Task: {self.user_task}, Due Date: {self.due_date}, Time Due: {self.due_time}"
+        return f"Task: {self.user_task}, Due Date: {self.due_date}, Time Due: {self.due_time}"  # send this information to the html file
 
 
 tasks: list[Task] = []
@@ -23,7 +29,9 @@ tasks: list[Task] = []
 @app.route("/", methods=["GET", "POST"])  # @ decorator modifies functions
 def index():
     if request.method != "POST":
-        return render_template("index.html", tasks=tasks)
+        return render_template(
+            "index.html", tasks=tasks
+        )  # passes the tasks list to webpage
     if "remove_task" in request.form and tasks:
         tasks.pop(
             request.form.get("index_to_pop", type=int) - 1
@@ -33,10 +41,20 @@ def index():
         task = Task(
             **{key: val for key, val in request.form.items() if key != "add_task"}
         )
-        # dictionary unpacking, k, v creates a new dictionary and removes adds task
-        # ** unpacks the dictionary Task(**{due_date="2024"}) == Task(due_date="2024")
+        # creates a new task object by unpacking the form data and passing the arguments to the task contructor
         tasks.append(task)
-    return render_template("index.html", tasks=tasks)
+
+    sorted_tasks = sorted(
+        tasks,
+        key=lambda task: (
+            dt.datetime.strptime(task.due_date, "%Y-%m-%d"),  # First: sort by due_date
+            dt.datetime.strptime(task.due_time, "%H:%M"),  # Second: sort by due_time
+        ),  # this strips the string and sorts the dates and times
+    )
+
+    return render_template(
+        "index.html", tasks=sorted_tasks
+    )  # page is updated with new information
 
 
 if __name__ == "__main__":
