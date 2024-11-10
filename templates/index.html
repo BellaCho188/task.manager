@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Task manager</title>
+    <link rel ='icon'  href="{{ url_for('static', filename='microsoft_todo.jpg') }}" />
     <style>
 
       *{
@@ -25,22 +26,23 @@
       }
     </style>
   </head>
-
+ 
   <body>
-    <h1>todo list</h1>
+    <h1>To do list</h1>
+    <small>Please enter what your task is, when it is due, and what time it is due</small>
 
     <div>
       <form method="post">
-        <label for="user_task">name of task</label>
+        <label for="user_task">Task</label>
         <input name="user_task" />
   
-        <label for="due_date">due date</label>
+        <label for="due_date">Due Date</label>
         <input name="due_date" type="date" />
   
-        <label for="due_time">due time</label>
+        <label for="due_time">Due Time</label>
         <input name="due_time" type="time" />
   
-        <button type="submit" name="add_task">add task</button>
+        <button type="submit" name="add_task">Add Task</button>
       </form>  
     </div>
 
@@ -48,10 +50,10 @@
     <table>
       <thead>
         <tr>
-          <th scope="col">task</th>
-          <th scope="col">due date</th>
-          <th scope="col">due time</th>
-          <th scope="col">remove a task</th>
+          <th scope="col">Task</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Due Time</th>
+          <th scope="col">Remove a Task</th>
         </tr>
       </thead>
       <tbody>
