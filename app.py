@@ -45,7 +45,7 @@ def index():
         except ValueError:
             return render_template(
                 "index.html",
-                error_message="Both date and time must be specified, also don't press enter",
+                error_message="Both due date and due time must be specified before adding a task.",
                 tasks=sorted(tasks, key=lambda task: (task.due_date, task.due_time)),
             )
 
