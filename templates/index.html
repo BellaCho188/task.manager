@@ -24,6 +24,9 @@
       tr:nth-child(even) {
         background-color: #DCDCDC;
       }
+      th{
+        background-color:rgb(172, 229, 255);
+      }
     </style>
   </head>
  
@@ -61,8 +64,8 @@
         {% for todo in tasks %}
         <tr>
           <td>{{ todo.user_task }}</td>
-          <td>{{ todo.due_date }}</td>
-          <td>{{ todo.due_time }}</td>
+          <td>{{ todo.due_date.strftime("%m/%d/%Y") }}</td>
+          <td>{{ todo.due_time.strftime("%I:%M %p") }}</td>
           <td>
             <form method="post">
               <input

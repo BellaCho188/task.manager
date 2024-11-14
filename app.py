@@ -14,11 +14,8 @@ class Task:
 
     def __init__(self, user_task: str, due_date: str, due_time: str):
         self.user_task = user_task
-        self.due_date = due_date  # dt.date.fromisoformat(due_time)
-        self.due_time = due_time  # dt.datetime.strptime("%H:%M")
-
-    def __str__(self) -> str:
-        return f"Task: {self.user_task}, Due Date: {self.due_date}, Time Due: {self.due_time}"  # send this information to the html file
+        self.due_date = dt.datetime.strptime(due_date, "%Y-%m-%d")
+        self.due_time = dt.datetime.strptime(due_time, "%H:%M")
 
 
 tasks: list[Task] = []
@@ -38,19 +35,16 @@ def index():
         )  # from html file remove task *enumerates the task (starts at 1)
         return render_template("index.html", tasks=tasks)
     if "add_task" in request.form:
-        task = Task(
-            **{key: val for key, val in request.form.items() if key != "add_task"}
-        )
-        # creates a new task object by unpacking the form data and passing the arguments to the task contructor
-        tasks.append(task)
+        try:
+            task = Task(
+                **{key: val for key, val in request.form.items() if key != "add_task"}
+            )
+            # creates a new task object by unpacking the form data and passing the arguments to the task contructor
+            tasks.append(task)
+        except ValueError:
+            return "Both date and time must be specified, also don't press enter", 500
 
-    sorted_tasks = sorted(
-        tasks,
-        key=lambda task: (
-            dt.datetime.strptime(task.due_date, "%Y-%m-%d"),  # First: sort by due_date
-            dt.datetime.strptime(task.due_time, "%H:%M"),  # Second: sort by due_time
-        ),  # this strips the string and sorts the dates and times
-    )
+    sorted_tasks = sorted(tasks, key=lambda task: (task.due_date, task.due_time))
 
     return render_template(
         "index.html", tasks=sorted_tasks
