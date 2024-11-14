@@ -16,20 +16,22 @@
 
       td,
       th {
-        border: 1px solid #dddddd;
+        border: 1px solid #000000;
         text-align: left;
         padding: 8px;
       }
 
       tr:nth-child(even) {
-        background-color: #FFB6C1;
+        background-color: #DCDCDC;
       }
     </style>
   </head>
  
   <body>
-    <h1>To do list</h1>
-    <small>Please enter what your task is, when it is due, and what time it is due</small>
+    <p>
+    <h1>To Do List</h1>
+    <header>Please enter what your task is and the date and time it is due</header>
+    </p>
 
     <div>
       <form method="post">
@@ -45,8 +47,7 @@
         <button type="submit" name="add_task">Add Task</button>
       </form>  
     </div>
-
-
+<p>
     <table>
       <thead>
         <tr>
@@ -76,7 +77,17 @@
         {% endfor %}
       </tbody>
     </table>
+</p>
+    <footer>
+    <style>
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 
     <img src="{{ url_for('static', filename='cooper.png') }}" width="200" />
   </body>
 </html>
+</footer>
