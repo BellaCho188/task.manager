@@ -49,7 +49,11 @@
   
         <button type="submit" name="add_task">Add Task</button>
       </form>  
+
     </div>
+    <p style="color: crimson;">
+      {% if error_message %} {{ error_message }} {% endif %}
+    </p>
 <p>
     <table>
       <thead>
