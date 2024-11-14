@@ -22,7 +22,7 @@ tasks: list[Task] = []  # initialize list that holds tasks
 
 
 # methods specifies the allowed ways the users are allowed to interact with the server
-# ['GET']         default its method
+# ['GET']         retrieves data from the serve (default if another method isn't called)
 # ['POST']        lets users send html data to server
 @app.route("/", methods=["GET", "POST"])  # @ decorator modifies functions
 def index():
