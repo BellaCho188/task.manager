@@ -31,9 +31,7 @@ def index():
             "index.html", tasks=tasks
         )  # passes the tasks list to webpage
     if "remove_task" in request.form and tasks:
-        tasks.pop(
-            request.form.get("index_to_pop", type=int) - 1
-        )  # from html file remove task *enumerates the task (starts at 1)
+        tasks.pop(request.form.get("index_to_pop", type=int) - 1)
         return render_template("index.html", tasks=tasks)
     if "add_task" in request.form:
         try:
