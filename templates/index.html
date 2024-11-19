@@ -2,40 +2,45 @@
 <html>
   <head>
     <title>Task manager</title>
-    <link rel ='icon'  href="{{ url_for('static', filename='microsoft_todo.jpg') }}" />
+    <link rel ='icon'  href="{{ url_for('static', filename='Check-Mark-PNG-File.png') }}" />
     <style>
 
       *{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        body{font-family: georgia, serif;}
       }
       table {
-        font-family: arial, sans-serif;
+        font-family: georgia, serif;
         border-collapse: collapse;
         width: 100%;
       }
 
       td,
       th {
-        border: 1px solid #000000;
+        border: 1px solid #7985af;
         text-align: left;
         padding: 8px;
       }
 
-      tr:nth-child(even) {
-        background-color: #DCDCDC;
+      tr {
+        background-color: #aebae2;
       }
       th{
-        background-color:rgb(172, 229, 255);
+        background-color:#8391bd;
+        color: #3c476a;
       }
+      h1{text-align: center;}
+      header{text-align: center;}
+      form{text-align: center;}
     </style>
   </head>
  
   <body>
     <p>
-    <h1>To Do List</h1>
-    <header>Please enter what your task is and the date and time it is due</header>
+    <h1>To Do List ✔
+    </h1>
+    <header>Please enter what your task is and the date and time it is due.</header>
     </p>
-
+    
     <div>
       <form method="post">
         <label for="user_task">Task</label>
@@ -49,7 +54,7 @@
   
         <button type="submit" name="add_task">Add Task</button>
       </form>  
-
+      
     </div>
     <p style="color: crimson;">
       {% if error_message %} {{ error_message }} {% endif %}
@@ -58,10 +63,12 @@
     <table>
       <thead>
         <tr>
+        
           <th scope="col">Task</th>
           <th scope="col">Due Date</th>
           <th scope="col">Due Time</th>
           <th scope="col">Remove Task</th>
+          
         </tr>
       </thead>
       <tbody>
